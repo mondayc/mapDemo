@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+  <title>英文、中英文地图</title>
+  <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+  <link rel="stylesheet" type="text/css" href="map.css">
+</head>
+
+<body>
+  <div id="container"></div>
+  <div class="input-card" style="width:15rem">
+    <h4>官方默认自定义样式</h4>
+    <div id="map-styles">
+      <div class="input-item">
+        <input type='radio' name='mapStyle' value='normal'>
+        <span>标准</span>
+        <span class="input-text">normal</span>
+      </div>
+      <div class="input-item"><input type='radio' name='mapStyle' value='dark'><span>幻影黑</span><span class="input-text">dark</span></div>
+      <div class="input-item"><input type='radio' name='mapStyle' value='whitesmoke' checked><span>远山黛</span><span class="input-text">whitesmoke</span></div>
+
+  </div>
+  <script src="https://cache.amap.com/lbs/static/es5.min.js"></script>
+  <script src="https://webapi.amap.com/maps?v=1.4.15&key=2f0c9118bc1671ed422c2cb5eb497b9a	"></script>
+  <script>
+    //初始化地图
+    var map = new AMap.Map('container', {
+      resizeEnable: true, //是否监控地图容器尺寸变化
+      mapStyle: "amap://styles/whitesmoke"
+    });
+
+    //绑定radio点击事件
+    var radios = document.querySelectorAll("#map-styles input");
+    radios.forEach(function(ratio) {
+      ratio.onclick = setMapStyle;
+    });
+
+    function setMapStyle() {
+      var styleName = "amap://styles/" + this.value;
+      map.setMapStyle(styleName);
+    }
+  </script>
+</body>
+
+</html>

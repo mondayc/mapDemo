@@ -8,6 +8,12 @@
   <title>英文、中英文地图</title>
   <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
   <link rel="stylesheet" type="text/css" href="map.css">
+  <style type="text/css">
+    img{
+      width: 24px;
+      height: 24px;
+    }
+  </style>
 </head>
 
 <body>
@@ -22,8 +28,9 @@
       </div>
       <div class="input-item"><input type='radio' name='mapStyle' value='dark'><span>幻影黑</span><span class="input-text">dark</span></div>
       <div class="input-item"><input type='radio' name='mapStyle' value='whitesmoke' checked><span>远山黛</span><span class="input-text">whitesmoke</span></div>
-
   </div>
+
+
   <script src="https://cache.amap.com/lbs/static/es5.min.js"></script>
   <script src="https://webapi.amap.com/maps?v=1.4.15&key=2f0c9118bc1671ed422c2cb5eb497b9a	"></script>
   <script>
@@ -45,6 +52,26 @@
       var styleName = "amap://styles/" + this.value;
       map.setMapStyle(styleName);
     }
+
+     var marker = new AMap.Marker({
+        position: map.getCenter(),
+        icon: 'img/spot-on.png',
+        offset: new AMap.Pixel(-8, -10)
+    });
+
+    marker.setMap(map);
+
+     // 设置鼠标划过点标记显示的文字提示
+    marker.setTitle('华美达酒店');
+
+    // 设置label标签
+    // label默认蓝框白底左上角显示，样式className为：amap-marker-label
+    marker.setLabel({
+        offset: new AMap.Pixel(20, 20),  //设置文本标注偏移量
+        content: "<div class='info'>华美达酒店 固体火灾 2级</div>", //设置文本标注内容
+        direction: 'right' //设置文本标注方位
+    });
+
   </script>
 </body>
 

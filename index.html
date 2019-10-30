@@ -18,19 +18,6 @@
 
 <body>
   <div id="container"></div>
-  <div class="input-card" style="width:15rem">
-    <h4>官方默认自定义样式</h4>
-    <div id="map-styles">
-      <div class="input-item">
-        <input type='radio' name='mapStyle' value='normal'>
-        <span>标准</span>
-        <span class="input-text">normal</span>
-      </div>
-      <div class="input-item"><input type='radio' name='mapStyle' value='dark'><span>幻影黑</span><span class="input-text">dark</span></div>
-      <div class="input-item"><input type='radio' name='mapStyle' value='whitesmoke' checked><span>远山黛</span><span class="input-text">whitesmoke</span></div>
-  </div>
-
-
   <script src="https://cache.amap.com/lbs/static/es5.min.js"></script>
   <script src="https://webapi.amap.com/maps?v=1.4.15&key=2f0c9118bc1671ed422c2cb5eb497b9a	"></script>
   <script>
@@ -39,24 +26,7 @@
       resizeEnable: true, //是否监控地图容器尺寸变化
       center: [111.306957,30.704467],
       zoom: 13,
-      mapStyle: "amap://styles/whitesmoke"
-    });
-
-    //绑定radio点击事件
-    var radios = document.querySelectorAll("#map-styles input");
-    radios.forEach(function(ratio) {
-      ratio.onclick = setMapStyle;
-    });
-
-    function setMapStyle() {
-      var styleName = "amap://styles/" + this.value;
-      map.setMapStyle(styleName);
-    }
-
-     var marker = new AMap.Marker({
-        position: map.getCenter(),
-        icon: 'img/spot-on.png',
-        offset: new AMap.Pixel(-8, -10)
+      mapStyle: "fe1fdb59fef0fc8b9e480d0811861ec5"
     });
 
     marker.setMap(map);
